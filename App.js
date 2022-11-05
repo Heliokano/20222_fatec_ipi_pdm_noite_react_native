@@ -10,18 +10,20 @@ import {useState} from 'react';
 
 export default function App() {
   const [lembrete, setLembrete] = useState('')
+  const [lembretes, setLembretes] = useState([])
+
   const capturarTexto = (lembreteDigitado) =>{
     lembreteDigitado = lembreteDigitado.toUpperCase()
     // Não faça isso!!!
     // lembrete = lembreteDigitado
-
     // Faça isso!!!
     setLembrete(lembreteDigitado)
   }
 
   const adicionarLembrete = () => {
-    console.log("Adicionando...", lembrete)
+    setLembretes([lembrete, ...lembretes])
     setLembrete('')
+    console.log(lembretes)
   }
   // Single Source of Truth
   return (
@@ -40,7 +42,7 @@ export default function App() {
         />
       </View>
       <View>
-
+        {lembretes}
       </View>
 
     </View>
